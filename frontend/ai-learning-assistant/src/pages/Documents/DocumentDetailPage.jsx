@@ -50,18 +50,32 @@ console.log("FILE PATH:", data?.data?.filePath);
   //   return `${baseUrl}${filePath.startsWith('/')? "":'/'}${filePath}`
   // };
 
+// const getPdfUrl = () => {
+//   const filePath = document?.data?.filePath;
+
+//   if (!filePath) return null;
+
+//   const uploadsIndex = filePath.indexOf("/uploads/");
+
+//   if (uploadsIndex === -1) return null;
+
+//   const cleanPath = filePath.substring(uploadsIndex);
+
+//   return `http://127.0.0.1:8000${cleanPath}`;
+// };
+
 const getPdfUrl = () => {
   const filePath = document?.data?.filePath;
 
   if (!filePath) return null;
 
-  const uploadsIndex = filePath.indexOf("/uploads/");
+  if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
+    return filePath;
+  }
 
-  if (uploadsIndex === -1) return null;
+  const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
-  const cleanPath = filePath.substring(uploadsIndex);
-
-  return `http://127.0.0.1:8000${cleanPath}`;
+  return `${baseUrl}${filePath.startsWith("/") ? "" : "/"}${filePath}`;
 };
 
 
@@ -90,7 +104,7 @@ const getPdfUrl = () => {
             Open in new tab
           </a> */}
           <a
-  href={getPdfUrl()}
+  href={pdfUrl}
   target="_blank"
   rel="noopener noreferrer"
   className="inline-flex items-center gap-1.5 text-sm text-blue-600"
@@ -110,7 +124,7 @@ const getPdfUrl = () => {
           }}
           /> */}
           <iframe
-  src={getPdfUrl()}
+  src={pdfUrl}
   className="w-full h-[70vh] bg-white rounded border border-gray-300"
   title="PDF Viewer"
   frameBorder="0"
