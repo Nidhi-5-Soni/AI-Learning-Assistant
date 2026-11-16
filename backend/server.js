@@ -67,10 +67,19 @@ app.use((req,res)=>{
 //     process.exit(1);
 // });
 
-const PORT = 8000;
+// const PORT = 8000;
 
-const server = app.listen(PORT, "127.0.0.1", () => {
-    console.log(`Server successfully listening at http://127.0.0.1:${PORT}`);
+// const server = app.listen(PORT, "127.0.0.1", () => {
+//     console.log(`Server successfully listening at http://127.0.0.1:${PORT}`);
+// });
+const PORT = process.env.PORT || 8000;
+
+const server = app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+server.on("error", (err) => {
+    console.error("Server error:", err);
 });
 
 server.on("error", (err) => {
