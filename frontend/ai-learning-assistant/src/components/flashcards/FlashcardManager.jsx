@@ -15,7 +15,7 @@ import moment from "moment";
 
 import flashcardService from "../../services/flashcardService";
 import aiService from "../../services/aiService";
-import Spinner from "../common/spinner";
+import Spinner from "../common/Spinner";
 import Modal from "../common/Modal";
 import Flashcard from "./Flashcard";
 

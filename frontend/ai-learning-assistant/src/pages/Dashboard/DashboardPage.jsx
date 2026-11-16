@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import Spinner from '../../components/common/spinner';
+import Spinner from '../../components/common/Spinner';
 import progressService from "../../services/progressService";
 import toast from "react-hot-toast";
 import {FileText,BookOpen,BrainCircuit,TrendingUp,Clock} from "lucide-react";
