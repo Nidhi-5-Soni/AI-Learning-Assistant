@@ -1,7 +1,7 @@
 import React,{useState,useEffect}from 'react';
 import {useParams,Link} from 'react-router-dom';
 import documentService from '../../services/documentService';
-import Spinner from '../../components/common/spinner';
+import Spinner from '../../components/common/Spinner';
 import toast from "react-hot-toast";
 import {BASE_URL} from "../../utils/apiPaths";
 import { ArrowLeft,ExternalLink } from 'lucide-react';
